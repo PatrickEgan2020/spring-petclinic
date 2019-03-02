@@ -104,7 +104,7 @@ pipeline {
         }
       }
     }
-    
+
     stage('Deploy to dev') {
       when {
         branch 'master'
@@ -116,7 +116,7 @@ pipeline {
         }
       }
     }
-    
+
     stage('Smoke test dev') {
       when {
         branch 'master'
@@ -142,7 +142,7 @@ pipeline {
         deployToEnvironment("ec2-user", "qa.petclinic.liatr.io", "petclinic-deploy-key", env.IMAGE, TAG, "spring-petclinic", "qa.petclinic.liatr.io")
       }
     }
-    
+
     stage('Smoke test qa') {
       when {
         branch 'master'
@@ -159,7 +159,7 @@ pipeline {
         input 'Deploy to Prod?'
       }
     }
-    
+
     stage('Blue/Green Prod Deploy') {
       when {
         branch 'master'
@@ -221,6 +221,16 @@ pipeline {
             sh "TAG=${TAG} blue-green/blue-green toggle"
           }
         }
+      }
+
+      stage('Notification of Build Pipeline') {
+        when {
+          branch 'master'
+        }
+           {
+              stage "Notification"
+              echo "Build process has completed!"
+          }
       }
     }
   }
