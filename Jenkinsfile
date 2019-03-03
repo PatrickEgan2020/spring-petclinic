@@ -42,12 +42,7 @@ pipeline {
         sh 'sleep 4'
       }
     }
-    stage('Notification of Build Pipeline Status') {
-    when {
-    branch 'master'
-    }
-        stage "Notification"
-        echo "Build process has completed!"
+    stage('Notification of Build Status To Slack') {
       agent any
       steps {
         //sample dummy step
