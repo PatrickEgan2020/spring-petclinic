@@ -72,7 +72,7 @@ stage('Smoke test Prod') {
     branch 'master'
     }
     agent any
-    }
+
     steps {
       echo "cd regression-suite && mvn clean -B test -DPETCLINIC_URL=https://prod.petclinic.liatr.io/petclinic"
       echo "Should be accessible at https://prod.petclinic.liatr.io/petclinic"
