@@ -51,12 +51,7 @@ pipeline {
   when {
     branch 'master'
   }
-  agent {
-    docker {
-      image 'maven:3.5.0'
-      args '--network=${LDOP_NETWORK_NAME}'
-    }
-  }
+  agent any
   steps {
     echo "cd regression-suite && mvn clean -B test -DPETCLINIC_URL=https://dev.petclinic.liatr.io/petclinic"
     echo "Should be accessible at https://dev.petclinic.liatr.io/petclinic"
