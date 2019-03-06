@@ -76,7 +76,7 @@ stage('Smoke test Prod') {
     stage('Notification of Build Status To Slack') {
       agent any
       steps {
-        echo "Sending slack channel alert for pipeline completion"
+        echo "Sending slack channel alert for FULL ßpipeline completion"
         sh 'sleep 4'
       }
     }
